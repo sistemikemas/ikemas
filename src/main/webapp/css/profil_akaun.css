@@ -1,0 +1,254 @@
+/* ==================== PROFIL AKAUN - CSS UNTUK SEMUA PERANAN ==================== */
+
+/* ==================== TOAST NOTIFICATION (OVERLAY) ==================== */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 300px;
+    max-width: 500px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease-out;
+    position: relative;
+    border-radius: 0px;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.toast.success {
+    background: #4caf50;
+    color: white;
+}
+
+.toast.error {
+    background: #f44336;
+    color: white;
+}
+
+.toast.warning {
+    background: #ffeb3b;
+    color: black;
+}
+
+.toast.info {
+    background: #2196f3;
+    color: white;
+}
+
+.toast .material-icons:first-child {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.toast .toast-content {
+    flex: 1;
+}
+
+.toast .toast-close {
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.toast .toast-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* Responsif untuk toast */
+@media (max-width: 768px) {
+    .toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: none;
+        width: calc(100% - 20px);
+    }
+}
+
+/* Alert - Masih dikekalkan untuk rujukan */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 0px;
+    margin-bottom: 24px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.alert-success {
+    background: var(--success-light, #d1fae5);
+    color: #059669;
+    border-left: 4px solid var(--success, #10b981);
+}
+
+.alert-error {
+    background: var(--danger-light, #ffe6e6);
+    color: var(--danger-dark, #cc0001);
+    border-left: 4px solid var(--danger, #ff0001);
+}
+
+.alert .material-icons {
+    font-size: 22px;
+}
+
+/* Form Styles - Khas untuk profil */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.profile-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gray-800, #2c3e50);
+    font-family: Georgia, serif;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--gray-400, #dce1e8);
+    border-radius: 0px;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary, #13017c);
+    box-shadow: 0 0 0 3px var(--primary-light, #e8e6f5);
+}
+
+.form-control:disabled {
+    background: var(--gray-200, #f1f3f9);
+    color: var(--gray-600, #6c7a91);
+    cursor: not-allowed;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--gray-600, #6c7a91);
+}
+
+.form-actions {
+    margin-top: 25px;
+    text-align: right;
+}
+
+.form-actions button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-form {
+        max-width: 100%;
+    }
+
+    .alert {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+
+    .form-control {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-actions button {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,308 @@
+/* ==================== STATUS PERMOHONAN - CSS KHUSUS ==================== */
+/* Hanya class unik yang TIDAK wujud dalam dashboard.css */
+
+/* Loading State - Guna semula dari dashboard, tambah gaya tambahan */
+.loading-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* Modal - Khas untuk popup pengesahan */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 0px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.2s;
+}
+
+.modal-body {
+    padding: 20px;
+    font-size: 14px;
+    color: var(--gray-800);
+}
+
+.modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--gray-300);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-danger:hover {
+    background: var(--danger-dark);
+    transform: translateY(-2px);
+}
+
+/* Action Buttons - Untuk edit dan delete */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 0px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--gray-200, #f1f3f9);
+}
+
+.btn-icon .material-icons {
+    font-size: 18px;
+}
+
+.btn-edit .material-icons {
+    color: var(--primary, #13017c);
+}
+
+.btn-delete .material-icons {
+    color: var(--danger, #dc2626);
+}
+
+/* Catatan untuk lulus/tolak */
+.catatan-lulus {
+    color: var(--success, #059669);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Georgia, serif;
+}
+
+.catatan-tolak {
+    color: var(--danger, #dc2626);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Georgia, serif;
+}
+
+/* Badge untuk Status Draf (tambahan pada dashboard.css) */
+.status-draf {
+    background: var(--gray-300, #e9edf2);
+    color: var(--gray-600, #6c7a91);
+}
+
+.status-sejarah  {
+    background: var(--primary-light, #e8e6f5);
+    color: var(--gray-600, #6c7a91);
+}
+
+/* ==================== TOAST NOTIFICATION (OVERLAY) - SAMA DENGAN PERMOHONAN.CSS ==================== */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 300px;
+    max-width: 500px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease-out;
+    position: relative;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.toast.success {
+    background: #4caf50;
+    color: black;
+}
+
+.toast.error {
+    background: #f44336;
+    color: black;
+}
+
+.toast.warning {
+    background: #ffeb3b;
+    color: black;
+}
+
+.toast.info {
+    background: #2196f3;
+    color: black;
+}
+
+.toast .material-icons:first-child {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.toast .toast-content {
+    flex: 1;
+}
+
+.toast .toast-close {
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.toast .toast-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* ==================== RESPONSIVE STYLES ==================== */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .action-buttons {
+        gap: 5px;
+    }
+
+    .btn-icon {
+        padding: 4px;
+    }
+
+    .btn-icon .material-icons {
+        font-size: 16px;
+    }
+
+    /* Toast responsive */
+    .toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: none;
+        width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+}

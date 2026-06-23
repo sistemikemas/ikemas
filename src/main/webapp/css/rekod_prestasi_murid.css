@@ -1,0 +1,517 @@
+/* ==================== REKOD PRESTASI MURID - CSS TAMBAHAN ==================== */
+/* Class berikut adalah UNIK untuk halaman rekod_prestasi_murid.jsp sahaja */
+/* Class yang sudah wujud dalam dashboard.css TIDAK disertakan di sini */
+
+/* Card header dengan search container - kombinasi khusus untuk rekod prestasi */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Search & Filter Section - susunan khusus untuk rekod prestasi */
+.search-filter-section {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+/* Search box wrapper dengan icon */
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gray-400);
+    background: white;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.search-input-wrapper:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(19, 1, 124, 0.1);
+}
+
+.search-input-wrapper .material-icons {
+    padding: 0 12px;
+    color: var(--gray-600);
+    font-size: 20px;
+}
+
+.search-input-wrapper input {
+    flex: 1;
+    border: none;
+    padding: 10px 12px 10px 0;
+    font-size: 14px;
+    outline: none;
+    font-family: Georgia, serif;
+    background: transparent;
+}
+
+/* Filter group dengan label - khusus untuk rekod prestasi */
+.filter-group {
+    min-width: 180px;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: 500;
+    color: var(--gray-600);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Form select untuk filter */
+.form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--gray-400);
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 42px;
+    font-family: Georgia, serif;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(19, 1, 124, 0.1);
+}
+
+/* Button Add - untuk rekod prestasi */
+.btn-add {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Georgia, serif;
+}
+
+.btn-add:hover {
+    background: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+/* Button Search */
+.btn-search {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Georgia, serif;
+}
+
+.btn-search:hover {
+    background: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+/* Button Edit - warna hijau khusus untuk rekod prestasi */
+.btn-edit {
+    background: #059669;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: Georgia, serif;
+}
+
+.btn-edit:hover {
+    background: #047857;
+    transform: scale(1.02);
+}
+
+/* Button Delete - warna merah */
+.btn-delete {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: Georgia, serif;
+}
+
+.btn-delete:hover {
+    background: #b91c1c;
+    transform: scale(1.02);
+}
+
+.btn-delete-sah {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: Georgia, serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-delete-sah:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Button Save untuk modal */
+.btn-save {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: Georgia, serif;
+}
+
+.btn-save:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Button Cancel untuk modal */
+.btn-cancel {
+    background: var(--gray-600);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: Georgia, serif;
+}
+
+.btn-cancel:hover {
+    background: var(--gray-800);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--gray-600, #6c7a91);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: Georgia, serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: var(--gray-800, #2c3e50);
+    transform: translateY(-2px);
+}
+
+/* Form group untuk modal */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--gray-600);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group label.required::after {
+    content: '*';
+    color: var(--danger);
+    margin-left: 4px;
+}
+
+/* Form control untuk input/text areas */
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--gray-400);
+    font-size: 14px;
+    font-family: Georgia, serif;
+    transition: all 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(19, 1, 124, 0.1);
+}
+
+/* Form row untuk layout 2 kolum */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Modal - versi untuk rekod prestasi (animation berbeza) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 500px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Animation khusus untuk modal rekod prestasi */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gray-600);
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--danger);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--gray-300);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Empty state untuk tiada data */
+.empty-state {
+    text-align: center;
+    padding: 48px;
+    color: var(--gray-600);
+}
+
+.empty-state .material-icons {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+/* Toast container dan animation untuk rekod prestasi */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 300px;
+    max-width: 500px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease-out;
+    position: relative;
+}
+
+.toast.success {
+    background: #4caf50;
+    color: white;
+}
+
+.toast.error {
+    background: #f44336;
+    color: white;
+}
+
+.toast.warning {
+    background: #ffeb3b;
+    color: black;
+}
+
+.toast.info {
+    background: #2196f3;
+    color: white;
+}
+
+.toast .toast-content {
+    flex: 1;
+}
+
+.toast-close {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.2);
+    animation: progress 5s linear forwards;
+}
+
+/* Animation khusus untuk toast */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* ==================== RESPONSIVE UNTUK REKOD PRESTASI ==================== */
+@media (max-width: 768px) {
+    .search-filter-section {
+        flex-direction: column;
+    }
+    
+    .search-box, .filter-group {
+        width: 100%;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .toast {
+        min-width: auto;
+        max-width: none;
+        width: calc(100% - 20px);
+    }
+}

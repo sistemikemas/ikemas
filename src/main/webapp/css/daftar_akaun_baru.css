@@ -1,0 +1,351 @@
+/* ===== RESET & ASAS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+/* Smooth transition untuk perubahan saiz skrin */
+.container,
+.left-panel,
+.right-panel,
+.login-box,
+.branding-bottom .slogan,
+.branding-bottom .description {
+    transition: all 0.2s ease;
+}
+
+/* ===== SUSUNAN UTAMA ===== */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* ===== PANEL KIRI (IMEJ LATAR) ===== */
+.left-panel {
+    flex: 1;
+    background: url('../image/latar-belakang.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+
+.left-panel .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ===== BRANDING ATAS ===== */
+.branding-top h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+.branding-top h2 {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.5;
+}
+
+/* ===== BRANDING BAWAH (SLOGAN & DESKRIPSI) ===== */
+.branding-bottom .slogan {
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.branding-bottom .description {
+    font-weight: 400;
+    line-height: 1.3;
+    color: #e0e0e0;
+    max-width: 600px;
+    margin-bottom: 10px;
+}
+
+/* ===== PANEL KANAN (BORANG DAFTAR AKAUN) ===== */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px;
+}
+
+/* Kotak daftar akaun */
+.login-box {
+    width: 500px;
+}
+
+.login-box h2 {
+    margin-bottom: 8px;
+    color: black;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.login-box > p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* Label */
+.login-box label {
+    display: block;
+    margin-bottom: 6px;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Input field */
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1px solid #e2e8f0;
+    font-size: 15px;
+    transition: all 0.2s;
+    background: #f8fafc;
+    border-radius: 0px;
+}
+
+.login-box input[type="text"]:focus,
+.login-box input[type="password"]:focus {
+    outline: none;
+    border-color: #13017c;
+    box-shadow: 0 0 0 3px rgba(19, 1, 124, 0.1);
+    background: white;
+}
+
+/* Butang daftar */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background: #13017c;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 0px;
+}
+
+.login-box button:hover {
+    background: #0e0168;
+}
+
+/* Link log masuk */
+.register {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #475569;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.register a {
+    color: #13017c;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.register a:hover {
+    text-decoration: none;
+}
+
+/* Mesej error */
+.error-message {
+    background: #fee2e2;
+    border-left: 4px solid #c62828;
+    padding: 10px 12px;
+    border-radius: 0px;
+    font-size: 13px;
+    color: #c62828;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    color: #94a3b8;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET (max-width: 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+    .login-box {
+        width: 420px;
+    }
+
+    .branding-bottom .slogan {
+        font-size: 48px;
+    }
+
+    .branding-bottom .description {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+   HANYA panel kanan dipaparkan, panel kiri disembunyi
+   ============================================ */
+@media (max-width: 768px) {
+    /* Sembunyikan panel kiri */
+    .left-panel {
+        display: none;
+    }
+
+    /* Panel kanan ambil seluruh skrin */
+    .container {
+        flex-direction: column;
+    }
+
+    .right-panel {
+        flex: 1;
+        width: 100%;
+        min-height: 100vh;
+        justify-content: center;
+        padding: 40px 24px;
+    }
+
+    /* Kotak daftar akaun */
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .login-box h2 {
+        font-size: 26px;
+        text-align: left;
+    }
+
+    .login-box > p {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .login-box label {
+        font-size: 13px;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .login-box button {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .register {
+        font-size: 13px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    footer {
+        margin-top: 20px;
+        font-size: 11px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE KECIL (max-width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    .right-panel {
+        padding: 30px 20px;
+    }
+
+    .login-box {
+        max-width: 100%;
+    }
+
+    .login-box h2 {
+        font-size: 22px;
+    }
+
+    .login-box > p {
+        font-size: 12px;
+    }
+
+    .login-box label {
+        font-size: 12px;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+        padding: 8px 10px;
+        font-size: 13px;
+        margin-bottom: 14px;
+    }
+
+    .login-box button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .register {
+        font-size: 11px;
+        margin-top: 20px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    footer {
+        font-size: 9px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - DESKTOP BESAR (min-width: 1400px)
+   ============================================ */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .login-box {
+        width: 550px;
+    }
+
+    .branding-bottom .slogan {
+        font-size: 65px;
+    }
+
+    .branding-bottom .description {
+        font-size: 22px;
+        max-width: 700px;
+    }
+}

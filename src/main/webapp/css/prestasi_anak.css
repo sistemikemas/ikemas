@@ -1,0 +1,242 @@
+/* ==================== PRESTASI ANAK - CSS KHUSUS ==================== */
+/* Hanya class unik yang TIDAK wujud dalam dashboard.css */
+
+/* Page Header */
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gray-800, #2c3e50);
+    margin-bottom: 8px;
+}
+
+.page-title .material-icons {
+    font-size: 28px;
+    color: var(--primary, #13017c);
+}
+
+.page-subtitle {
+    color: var(--gray-600, #6c7a91);
+    font-size: 14px;
+    margin-left: 40px;
+}
+
+/* Child Selector - Khas untuk prestasi anak */
+.child-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.selector-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+.child-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    background: var(--gray-200, #f1f3f9);
+    border: 2px solid transparent;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 200px;
+    flex: 1;
+}
+
+.child-btn:hover {
+    background: var(--primary-light, #e8e6f5);
+    transform: translateY(-2px);
+}
+
+.child-btn.active {
+    background: var(--primary-light, #e8e6f5);
+    border-color: var(--primary, #13017c);
+}
+
+.child-btn .material-icons {
+    font-size: 32px;
+    color: var(--primary, #13017c);
+}
+
+.child-info {
+    text-align: left;
+}
+
+.child-info strong {
+    display: block;
+    font-size: 16px;
+    color: var(--gray-800, #2c3e50);
+}
+
+.child-info small {
+    font-size: 12px;
+    color: var(--gray-600, #6c7a91);
+}
+
+.no-child {
+    text-align: center;
+    padding: 40px;
+    color: var(--gray-600, #6c7a91);
+    width: 100%;
+}
+
+/* Gred Badge - Khas untuk prestasi */
+.gred-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 0px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.gred-cemerlang {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.gred-sangatbaik {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.gred-baik {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+/* Catatan Cell - Khas untuk jadual prestasi */
+.catatan-cell {
+    max-width: 200px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Toast Notification - Gaya unik untuk popup */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 0px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    animation: slideUp 0.3s ease;
+}
+
+.toast.error {
+    background: #dc2626;
+}
+
+.toast.warning {
+    background: #f59e0b;
+}
+
+@keyframes slideUp {
+    from {
+        bottom: -50px;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 20px;
+    }
+
+    .page-subtitle {
+        font-size: 12px;
+        margin-left: 36px;
+    }
+
+    .child-btn {
+        width: 100%;
+        min-width: auto;
+        flex: none;
+    }
+
+    .child-btn .material-icons {
+        font-size: 28px;
+    }
+
+    .child-info strong {
+        font-size: 14px;
+    }
+
+    .child-info small {
+        font-size: 11px;
+    }
+
+    .catatan-cell {
+        max-width: 120px;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 18px;
+    }
+
+    .page-subtitle {
+        font-size: 11px;
+        margin-left: 32px;
+    }
+
+    .child-btn {
+        padding: 12px 16px;
+    }
+
+    .child-btn .material-icons {
+        font-size: 28px;
+    }
+
+    .child-info strong {
+        font-size: 14px;
+    }
+
+    .child-info small {
+        font-size: 11px;
+    }
+
+    .gred-badge {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+
+    .catatan-cell {
+        max-width: 100px;
+    }
+
+    .toast {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+}
