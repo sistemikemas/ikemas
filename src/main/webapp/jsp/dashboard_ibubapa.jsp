@@ -126,11 +126,12 @@
                                     <th>Nama Murid</th>
                                     <th>Tadika</th>
                                     <th>Tarikh Mohon</th>
+                                    <th>Tahun Kemasukan</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                <tr><td colspan="5" class="text-center">Memuat data...<\/td><\/tr>
+                                <tr><td colspan="6" class="text-center">Memuat data...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -230,12 +231,13 @@
                         rows += '<td data-label="Nama Murid">' + formatText(item.namamurid) + '<\/td>';
                         rows += '<td data-label="Tadika">' + formatText(item.tadika) + '<\/td>';
                         rows += '<td data-label="Tarikh Mohon">' + tarikhBaru + '<\/td>';
+                        rows += '<td data-label="Tahun Kemasukan">' + (item.tahunkemasukan || '-') + '</td>';
                         rows += '<td data-label="Status"><span class="status-badge ' + statusClass + '">' + statusText + '<\/span><\/td>';
                         rows += '<\/tr>';
                     }
                     tbody.innerHTML = rows;
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="5" class="text-center">Tiada permohonan.<\/td><\/tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" class="text-center">Tiada permohonan</td></tr>';
                 }
             }
 
@@ -343,7 +345,7 @@
                     }
                     container.innerHTML = html;
                 } else {
-                    container.innerHTML = '<div class="loading-anak">Tiada data prestasi. Sila buat permohonan terlebih dahulu.</div>';
+                    container.innerHTML = '<div class="loading-anak">Tiada data prestasi</div>';
                 }
             }
 
@@ -362,5 +364,19 @@
                         document.getElementById('prestasiRingkasanGrid').innerHTML = '<div class="loading-anak">Ralat memuat data prestasi.</div>';
                     });
         </script>
+        
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            (function () {
+                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/6a451e22b539ed1d4853c464/1jsevrecn';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
     </body>
 </html>

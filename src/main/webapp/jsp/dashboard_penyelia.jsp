@@ -1,30 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Pengguna" %>
-<%@ page import="java.util.*, model.Tadika" %>
-<%@ page import="dao.TadikaDAO, dao.GuruDAO" %>
 
 <%
+    // Sahkan session dan peranan pengguna
     Pengguna p = (Pengguna) session.getAttribute("pengguna");
     if (p == null || !p.getPeranan().equals("penyelia")) {
         response.sendRedirect("log_masuk.jsp");
         return;
-    }
-
-    // Create DAO instances
-    TadikaDAO tadikaDAO = new TadikaDAO();
-    GuruDAO guruDAO = new GuruDAO();
-
-    // Get data from request attributes
-    Integer jumlahTadika = (Integer) request.getAttribute("jumlahTadika");
-    Integer jumlahMurid = (Integer) request.getAttribute("jumlahMurid");
-    Integer jumlahGuru = (Integer) request.getAttribute("jumlahGuru");
-    List<Tadika> senaraiTadika = (List<Tadika>) request.getAttribute("senaraiTadika");
-
-    jumlahTadika = (jumlahTadika != null) ? jumlahTadika : 0;
-    jumlahMurid = (jumlahMurid != null) ? jumlahMurid : 0;
-    jumlahGuru = (jumlahGuru != null) ? jumlahGuru : 0;
-    if (senaraiTadika == null) {
-        senaraiTadika = new ArrayList<>();
     }
 
     // Format DUN untuk paparan
@@ -33,35 +15,6 @@
     if (dunSeliaan != null && dunSeliaan.contains(" ")) {
         int firstSpace = dunSeliaan.indexOf(" ");
         dunDisplay = dunSeliaan.substring(0, firstSpace) + ", " + dunSeliaan.substring(firstSpace + 1);
-    }
-%>
-
-<%!
-    // ==================== FUNGSI UNTUK GRED ====================
-    String getGred(double skor) {
-        if (skor >= 80) {
-            return "Cemerlang";
-        }
-        if (skor >= 60) {
-            return "Baik";
-        }
-        if (skor >= 50) {
-            return "Memuaskan";
-        }
-        return "Perlu Penambahbaikan";
-    }
-
-    String getGredClass(double skor) {
-        if (skor >= 80) {
-            return "status-lulus";
-        }
-        if (skor >= 60) {
-            return "status-dalamproses";
-        }
-        if (skor >= 50) {
-            return "status-buka";
-        }
-        return "status-tolak";
     }
 %>
 
@@ -79,6 +32,7 @@
         <meta http-equiv="Expires" content="0">
     </head>
     <body>
+        <!-- Container untuk toast notification -->
         <div id="toastContainer" class="toast-container"></div>
 
         <div class="dashboard">
@@ -138,32 +92,32 @@
 
             <!-- ==================== MAIN CONTENT ==================== -->
             <main class="main-content">
-                <!-- Stats Grid - 3 KAD -->
+                <!-- Stats Grid - 3 KAD (guna ID untuk JavaScript) -->
                 <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
                     <div class="stat-card">
                         <div class="stat-icon"><span class="material-icons">school</span></div>
                         <div class="stat-info">
-                            <div class="stat-value"><%= jumlahTadika%></div>
+                            <div class="stat-value" id="jumlahTadika">-</div>
                             <div class="stat-label">Jumlah Tadika</div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><span class="material-icons">groups</span></div>
                         <div class="stat-info">
-                            <div class="stat-value"><%= jumlahMurid%></div>
+                            <div class="stat-value" id="jumlahMurid">-</div>
                             <div class="stat-label">Jumlah Murid</div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><span class="material-icons">badge</span></div>
                         <div class="stat-info">
-                            <div class="stat-value"><%= jumlahGuru%></div>
+                            <div class="stat-value" id="jumlahGuru">-</div>
                             <div class="stat-label">Jumlah Guru</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Kawalan Sesi Permohonan -->
+                <!-- Kawalan Sesi Permohonan (Fungsi sedia ada - TIDAK diubah) -->
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Kawalan Sesi Permohonan</h3>
@@ -208,7 +162,7 @@
                     </div>
                 </div>
 
-                <!-- Senarai Tadika (Ringkasan 5 Teratas) -->
+                <!-- Senarai Tadika (Ringkasan 5 Teratas) - guna ID untuk JavaScript -->
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
@@ -226,58 +180,10 @@
                                     <th>Nama Tadika</th>
                                     <th>Bilangan Murid</th>
                                     <th>Bilangan Guru</th>
-                                    <th>Gred</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <% if (senaraiTadika.isEmpty()) { %>
-                                <tr><td colspan="5" class="text-center">Tiada tadika dalam DUN ini</td></tr>
-                                <% } else {
-                                    int count = 0;
-                                    for (Tadika tadika : senaraiTadika) {
-                                        if (count >= 5) {
-                                            break;
-                                        }
-                                        count++;
-
-                                        // Dapatkan jumlah murid dan guru untuk setiap tadika
-                                        int jumlahMuridTadika = 0;
-                                        int jumlahGuruTadika = 0;
-
-                                        try {
-                                            jumlahMuridTadika = tadikaDAO.getJumlahMuridByKodTadika(tadika.getKodtadika());
-                                            jumlahGuruTadika = guruDAO.getJumlahGuruByKodTadika(tadika.getKodtadika());
-                                        } catch (Exception e) {
-                                            // Handle error
-                                        }
-
-                                        // Tentukan gred berdasarkan bilangan murid
-                                        String gred = "Tiada Data";
-                                        String gredClass = "status-tolak";
-
-                                        if (jumlahMuridTadika >= 40) {
-                                            gred = "A (Cemerlang)";
-                                            gredClass = "status-lulus";
-                                        } else if (jumlahMuridTadika >= 25) {
-                                            gred = "B (Baik)";
-                                            gredClass = "status-dalamproses";
-                                        } else if (jumlahMuridTadika >= 10) {
-                                            gred = "C (Memuaskan)";
-                                            gredClass = "status-buka";
-                                        } else if (jumlahMuridTadika > 0) {
-                                            gred = "D (Perlu Penambahbaikan)";
-                                            gredClass = "status-tolak";
-                                        }
-                                %>
-                                <tr>
-                                    <td><%= tadika.getKodtadika()%></td>
-                                    <td><%= tadika.getNamatadika()%></td>
-                                    <td><%= jumlahMuridTadika%></td>
-                                    <td><%= jumlahGuruTadika%></td>
-                                    <td><span class="status-badge <%= gredClass%>"><%= gred%></span></td>
-                                </tr>
-                                <% }
-                                    }%>
+                            <tbody id="senaraiTadikaBody">
+                                <tr><td colspan="4" class="text-center">Memuat data...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -286,7 +192,9 @@
         </div>
 
         <script>
-            // ==================== TOAST NOTIFICATION ====================
+            // ================================================================
+            // TOAST NOTIFICATION (Fungsi sedia ada - TIDAK diubah)
+            // ================================================================
             function showToast(message, type, duration) {
                 type = type || 'info';
                 duration = duration || 5000;
@@ -310,7 +218,48 @@
                 }, duration);
             }
 
-            // ==================== SESI PERMOHONAN ====================
+            // ================================================================
+            // MUAT DATA DASHBOARD (Sama macam dashboard guru besar)
+            // ================================================================
+            function loadDashboard() {
+                fetch('${pageContext.request.contextPath}/DashboardPenyeliaServlet?ajax=1')
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (data) {
+                            // Kemaskini 3 kad statistik
+                            document.getElementById('jumlahTadika').innerText = data.jumlahTadika || '0';
+                            document.getElementById('jumlahMurid').innerText = data.jumlahMurid || '0';
+                            document.getElementById('jumlahGuru').innerText = data.jumlahGuru || '0';
+
+                            // Kemaskini jadual senarai tadika
+                            var tbody = document.getElementById('senaraiTadikaBody');
+                            if (data.senaraiTadika && data.senaraiTadika.length > 0) {
+                                var rows = '';
+                                for (var i = 0; i < data.senaraiTadika.length; i++) {
+                                    var tadika = data.senaraiTadika[i];
+                                    rows += '<tr>';
+                                    rows += '<td>' + tadika.kodtadika + '</td>';
+                                    rows += '<td>' + tadika.namatadika + '</td>';
+                                    rows += '<td>' + tadika.jumlahMurid + '</td>';
+                                    rows += '<td>' + tadika.jumlahGuru + '</td>';
+                                    rows += '</tr>';
+                                }
+                                tbody.innerHTML = rows;
+                            } else {
+                                tbody.innerHTML = '<tr><td colspan="5" class="text-center">Tiada tadika dalam DUN ini</td></tr>';
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error('Ralat memuat dashboard:', error);
+                            document.getElementById('senaraiTadikaBody').innerHTML = '<tr><td colspan="5" class="text-center">Ralat memuat data</td></tr>';
+                            showToast('Ralat memuatkan data dashboard', 'error');
+                        });
+            }
+
+            // ================================================================
+            // SESI PERMOHONAN (Fungsi sedia ada - TIDAK diubah)
+            // ================================================================
             const inputTahun = document.getElementById('tahunSesiInput');
 
             function getTahun() {
@@ -350,7 +299,9 @@
                         });
             }
 
-            // Event Listeners
+            // ================================================================
+            // EVENT LISTENERS (Fungsi sedia ada - TIDAK diubah)
+            // ================================================================
             document.getElementById('btnTahunTambah')?.addEventListener('click', function () {
                 let tahun = getTahun();
                 if (tahun < 2030) {
@@ -358,6 +309,7 @@
                     loadStatusSesi();
                 }
             });
+
             document.getElementById('btnTahunKurang')?.addEventListener('click', function () {
                 let tahun = getTahun();
                 if (tahun > 2027) {
@@ -365,6 +317,7 @@
                     loadStatusSesi();
                 }
             });
+
             inputTahun?.addEventListener('change', function () {
                 loadStatusSesi();
             });
@@ -409,8 +362,12 @@
                 }
             });
 
+            // ================================================================
+            // PAPAR DATA SEMASA HALAMAN DIMUAT
+            // ================================================================
             document.addEventListener('DOMContentLoaded', function () {
-                loadStatusSesi();
+                loadDashboard();  // <-- BARU: Muat data dashboard
+                loadStatusSesi(); // <-- SEDIA ADA: Muat status sesi
             });
         </script>
     </body>

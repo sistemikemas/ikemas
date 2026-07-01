@@ -146,7 +146,7 @@
                                     int countDalamProses = 0, countLulus = 0, countTolak = 0;
                                     if (list == null || list.isEmpty()) {
                                 %>
-                                <tr><td colspan="6" class="text-center">Tiada permohonan pendaftaran.<\/td><\/tr>
+                                <tr><td colspan="6" class="text-center">Tiada permohonan pendaftaran
                                         <% } else {
                                             for (Permohonan d : list) {
                                                 String namaMurid = muridDAO.getNamaByNoKad(d.getNokadpengenalanmurid());

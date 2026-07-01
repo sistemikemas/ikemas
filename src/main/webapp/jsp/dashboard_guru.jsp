@@ -126,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- GRAF KEHADIRAN BULANAN -->
                     <div class="card">
                         <div class="card-header">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- SENARAI MURID (RINGKASAN) -->
                 <div class="card">
                     <div class="card-header">
@@ -230,9 +230,6 @@
                 var today = new Date();
                 var birthDate = new Date(tarikhLahir);
                 var age = today.getFullYear() - birthDate.getFullYear();
-                var m = today.getMonth() - birthDate.getMonth();
-                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
-                    age--;
                 return age;
             }
 
@@ -259,7 +256,7 @@
                                     rows += '<td>' + capitalizeEachWord(murid.namamurid || '-') + '</td>';
                                     rows += '<td>' + (murid.jantina || '-') + '</td>';
                                     rows += '<td>' + formatDate(murid.tarikhlahir) + '</td>';
-                                    rows += '<td>' + hitungUmur(murid.tarikhlahir) + ' tahun</td>';
+                                    rows += '<td>' + hitungUmur(murid.tarikhlahir) + ' Tahun</td>';
                                     rows += '</tr>';
                                 }
                                 tbody.innerHTML = rows;

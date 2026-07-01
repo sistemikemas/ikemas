@@ -363,7 +363,7 @@
                 const required = stepDiv.querySelectorAll('[required]');
                 for (let i = 0; i < required.length; i++) {
                     if (!required[i].value.trim()) {
-                        showToast('Sila lengkapkan semua maklumat yang diperlukan.', 'warning', 5000);
+                        showToast('Sila lengkapkan semua maklumat yang diperlukan', 'warning', 5000);
                         required[i].focus();
                         return false;
                     }
@@ -576,7 +576,7 @@
                             if (data.success) {
                                 showToast('Permohonan disimpan.', 'success', 5000);
                             } else {
-                                showToast('Gagal menyimpan permohonan.', 'error', 5000);
+                                showToast('Gagal menyimpan permohonan', 'error', 5000);
                             }
                         });
             });

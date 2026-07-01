@@ -150,6 +150,7 @@
                                     <tr>
                                         <th>Tarikh</th>
                                         <th>Jenis Prestasi</th>
+                                        <th>Subjek</th>
                                         <th>Markah (%)</th>
                                         <th>Gred</th>
                                         <th>Guru</th>
@@ -158,7 +159,7 @@
                                 </thead>
                                 <tbody id="prestasiBody">
                                     <tr>
-                                        <td colspan="6" class="text-center">Tiada rekod prestasi</td>
+                                        <td colspan="7" class="text-center">Tiada rekod prestasi</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -361,6 +362,7 @@
                         rows += '<tr>';
                         rows += '<td>' + formatDate(item.tarikh) + '<\/td>';
                         rows += '<td>' + (item.jenisprestasi || '-') + '<\/td>';
+                        rows += '<td>' + (item.subjek || '-') + '<\/td>';
                         rows += '<td>' + (item.markahperatus ? item.markahperatus + '%' : '-') + '<\/td>';
                         rows += '<td>' + getGredBadge(item.gred) + '<\/td>';
                         rows += '<td>' + (item.namaguru || '-') + '<\/td>';
@@ -370,7 +372,7 @@
                     tbody.innerHTML = rows;
                     document.getElementById('tableCard').style.display = 'block';
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="6" class="text-center">Tiada rekod prestasi<\/td><\/tr>';
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center">Tiada rekod prestasi<\/td><\/tr>';
                     document.getElementById('tableCard').style.display = 'block';
                 }
             }
@@ -418,7 +420,7 @@
                                     updateTable(data.prestasi);
                                 }
                             } else {
-                                document.getElementById('childSelector').innerHTML = '<div class="no-child">Tiada anak berdaftar. Sila buat permohonan terlebih dahulu.</div>';
+                                document.getElementById('childSelector').innerHTML = '<div class="no-child">Tiada anak berdaftar</div>';
                             }
 
                             document.getElementById('loadingState').style.display = 'none';

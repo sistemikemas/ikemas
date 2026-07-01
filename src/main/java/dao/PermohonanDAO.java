@@ -186,6 +186,7 @@ public class PermohonanDAO {
         List<Map<String, String>> list = new ArrayList<>();
         String sql = "SELECT p.idpermohonan, m.nokadpengenalan, m.namamurid, "
                 + "p.tarikhpermohonan, p.statuspermohonan, p.catatanpenolakan, "
+                + "YEAR(p.tahunkemasukan) as tahun_kemasukan, " 
                 + "t.namatadika "
                 + "FROM permohonan p "
                 + "JOIN murid m ON p.nokadpengenalanmurid = m.nokadpengenalan "
@@ -203,7 +204,8 @@ public class PermohonanDAO {
                 row.put("tarikh", rs.getString("tarikhpermohonan"));
                 row.put("status", rs.getString("statuspermohonan"));
                 row.put("tadika", rs.getString("namatadika"));
-                row.put("catatanpenolakan", rs.getString("catatanpenolakan")); // ← TAMBAH INI
+                row.put("catatanpenolakan", rs.getString("catatanpenolakan"));
+                row.put("tahunkemasukan", rs.getString("tahun_kemasukan"));
                 list.add(row);
             }
         } catch (SQLException e) {
@@ -250,6 +252,7 @@ public class PermohonanDAO {
     public List<Map<String, String>> getDrafByIbuBapa(int idIbuBapa) {
         List<Map<String, String>> list = new ArrayList<>();
         String sql = "SELECT p.idpermohonan, p.nokadpengenalanmurid, p.tarikhpermohonan, p.statuspermohonan, "
+                + "YEAR(p.tahunkemasukan) as tahun_kemasukan, "
                 + "m.namamurid, t.namatadika "
                 + "FROM permohonan p "
                 + "JOIN murid m ON p.nokadpengenalanmurid = m.nokadpengenalan "
@@ -267,6 +270,7 @@ public class PermohonanDAO {
                 row.put("tarikh", rs.getString("tarikhpermohonan"));
                 row.put("tadika", rs.getString("namatadika"));
                 row.put("status", rs.getString("statuspermohonan"));
+                row.put("tahunkemasukan", rs.getString("tahun_kemasukan"));
                 list.add(row);
             }
         } catch (SQLException e) {

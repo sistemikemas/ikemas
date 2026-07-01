@@ -151,7 +151,7 @@
                             <canvas id="prestasiChart"></canvas>
                         </div>
                         <div id="tiadaDataMsg" class="chart-empty" style="display: none;">
-                            Tiada data prestasi untuk bulan ini.
+                            Tiada data prestasi untuk bulan ini
                         </div>
                     </div>
                 </div>

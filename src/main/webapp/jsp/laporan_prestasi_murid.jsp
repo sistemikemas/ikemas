@@ -191,13 +191,14 @@
                                 <tr>
                                     <th>No. MyKid</th>
                                     <th>Nama Murid</th>
+                                    <th>Subjek</th>
                                     <th>Markah (%)</th>
                                     <th>Gred</th>
                                 </tr>
                             </thead>
                             <tbody id="tableKesediaan">
                                 <% if (dataKesediaan == null || dataKesediaan.isEmpty()) { %>
-                                <tr><td colspan="4" class="text-center">Tiada data.
+                                <tr><td colspan="5" class="text-center">Tiada data.
                                         <% } else {
                                             for (Map<String, String> item : dataKesediaan) {
                                                 double markah = Double.parseDouble(item.get("markah"));
@@ -214,6 +215,7 @@
                                 <tr>
                                     <td><%= item.get("nokadpengenalan")%></td>
                                     <td><%= item.get("namamurid")%></td>
+                                    <td><%= item.get("subjek")%></td>
                                     <td><%= item.get("markah")%></td>
                                     <td><%= gred%></td>
                                 </tr>
@@ -319,13 +321,14 @@
                                     <th>No. MyKid</th>
                                     <th>Nama Murid</th>
                                     <th>Tarikh</th>
+                                    <th>Subjek</th>
                                     <th>Markah (%)</th>
                                     <th>Gred</th>
                                 </tr>
                             </thead>
                             <tbody id="tablePentaksiran">
                                 <% if (dataPentaksiran == null || dataPentaksiran.isEmpty()) { %>
-                                <tr><td colspan="5" class="text-center">Tiada data.
+                                <tr><td colspan="6" class="text-center">Tiada data.
                                         <% } else {
                                             for (Map<String, String> item : dataPentaksiran) {
                                                 double markah = Double.parseDouble(item.get("markah"));
@@ -346,6 +349,7 @@
                                     <td><%= item.get("nokadpengenalan")%></td>
                                     <td><%= item.get("namamurid")%></td>
                                     <td><%= tarikhPaparan%></td>
+                                    <td><%= item.get("subjek")%></td>
                                     <td><%= item.get("markah")%></td>
                                     <td><%= gred%></td>
                                 </tr>

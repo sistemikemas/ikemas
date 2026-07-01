@@ -17,7 +17,7 @@ public class PrestasiAnakDAO {
         List<Map<String, String>> list = new ArrayList<>();
 
         String sql = "SELECT p.idprestasi, p.nokadpengenalanmurid, p.tarikh, "
-                + "p.jenisprestasi, p.markahperatus, p.gred, p.catatan, "
+                + "p.jenisprestasi, p.subjek, p.markahperatus, p.gred, p.catatan, "
                 + "p.statuskehadiran, pg.nama as namaguru "
                 + "FROM prestasimurid p "
                 + "LEFT JOIN guru g ON p.idguru = g.idguru "
@@ -36,6 +36,7 @@ public class PrestasiAnakDAO {
                 row.put("nokadpengenalanmurid", rs.getString("nokadpengenalanmurid"));
                 row.put("tarikh", rs.getString("tarikh"));
                 row.put("jenisprestasi", rs.getString("jenisprestasi"));
+                row.put("subjek", rs.getString("subjek") != null ? rs.getString("subjek") : "-");
                 row.put("markahperatus", rs.getString("markahperatus"));
                 row.put("gred", rs.getString("gred"));
                 row.put("catatan", rs.getString("catatan") != null ? rs.getString("catatan") : "-");

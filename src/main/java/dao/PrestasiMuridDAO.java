@@ -417,7 +417,7 @@ public class PrestasiMuridDAO {
     public List<Map<String, String>> getDataKesediaan(String kodTadika, Integer tahun, String subjek) {
         List<Map<String, String>> list = new ArrayList<>();
 
-        String sql = "SELECT m.nokadpengenalan, m.namamurid, p.markahperatus "
+        String sql = "SELECT m.nokadpengenalan, m.namamurid, p.subjek, p.markahperatus "
                 + "FROM murid m "
                 + "JOIN prestasimurid p ON m.nokadpengenalan = p.nokadpengenalanmurid "
                 + "WHERE m.kodtadika = ? "
@@ -440,6 +440,7 @@ public class PrestasiMuridDAO {
                 Map<String, String> row = new HashMap<>();
                 row.put("nokadpengenalan", rs.getString("nokadpengenalan"));
                 row.put("namamurid", rs.getString("namamurid"));
+                row.put("subjek", rs.getString("subjek"));
                 row.put("markah", String.valueOf(rs.getDouble("markahperatus")));
                 list.add(row);
             }
@@ -522,7 +523,7 @@ public class PrestasiMuridDAO {
     public List<Map<String, String>> getDataPentaksiran(String kodTadika, Integer tahun, Integer bulan, String subjek) {
         List<Map<String, String>> list = new ArrayList<>();
 
-        String sql = "SELECT m.nokadpengenalan, m.namamurid, p.tarikh, p.markahperatus "
+        String sql = "SELECT m.nokadpengenalan, m.namamurid, p.tarikh, p.subjek, p.markahperatus "
                 + "FROM murid m "
                 + "JOIN prestasimurid p ON m.nokadpengenalan = p.nokadpengenalanmurid "
                 + "WHERE m.kodtadika = ? "
@@ -555,6 +556,7 @@ public class PrestasiMuridDAO {
                     tarikhStr = sdf.format(tarikhSQL);
                 }
                 row.put("tarikh", tarikhStr);
+                row.put("subjek", rs.getString("subjek"));
                 row.put("markah", String.valueOf(rs.getDouble("markahperatus")));
                 list.add(row);
             }

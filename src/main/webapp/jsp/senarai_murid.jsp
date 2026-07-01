@@ -141,7 +141,7 @@
                             </thead>
                             <tbody id="tableBody">
                                 <% if (senaraiMurid == null || senaraiMurid.isEmpty()) { %>
-                                <tr><td colspan="9" class="text-center">Tiada murid berdaftar.<\/td><\/tr>
+                                <tr><td colspan="9" class="text-center">Tiada murid berdaftar
                                         <% } else {
                                             for (Map<String, String> murid : senaraiMurid) {
                                         %>

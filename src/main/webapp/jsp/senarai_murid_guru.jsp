@@ -164,7 +164,6 @@
                                 <tr>
                                     <td colspan="6" class="text-center">
                                         <div class="empty-state">
-                                            <span class="material-icons">school</span>
                                             <p>Tiada murid berdaftar</p>
                                         </div>
                                     </td>
